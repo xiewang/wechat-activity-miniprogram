@@ -1,0 +1,99 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 活动详情内容 -->
+  <block wx:if="{{!loading && activity}}">
+    <!-- 过期标识 -->
+    <view class="expired-banner" wx:if="{{activity.isExpired || activity.status === 'archived'}}">
+      <text class="expired-text">⚠️ 该活动已过期或已结束</text>
+    </view>
+
+    <!-- 报名截止倒计时 -->
+    <view class="countdown-banner" wx:if="{{countdown && !activity.isExpired}}">
+      <text class="countdown-text">⏰ 距离报名截止还有 {{countdown}}</text>
+    </view>
+
+    <!-- 活动标题区 -->
+    <view class="header-section card">
+      <view class="activity-tags">
+        <text class="tag tag-primary">{{activity.type}}</text>
+        <text class="tag tag-secondary">{{activity.ageGroup}}</text>
+        <text class="tag tag-danger" wx:if="{{activity.isExpired}}">已过期</text>
+        <text class="tag tag-warning" wx:if="{{!activity.isExpired && countdown}}">报名中</text>
+      </view>
+      <text class="activity-title">{{activity.title}}</text>
+      <text class="activity-desc" wx:if="{{activity.description}}">{{activity.description}}</text>
+    </view>
+
+    <!-- 活动信息区 -->
+    <view class="info-section card">
+      <view class="section-title">活动信息</view>
+      
+      <view class="info-item">
+        <text class="info-label">📅 活动时间</text>
+        <text class="info-value">{{formatDate(activity.startDate)}} - {{formatDate(activity.endDate)}}</text>
+      </view>
+      
+      <view class="info-item" wx:if="{{activity.deadline}}">
+        <text class="info-label">⏰ 报名截止</text>
+        <text class="info-value {{activity.isExpired ? 'expired-text' : ''}}">
+          {{formatDateTime(activity.deadline)}}
+        </text>
+      </view>
+      
+      <view class="info-item">
+        <text class="info-label">📍 活动地点</text>
+        <text class="info-value">{{activity.region}} {{activity.location || '待定'}}</text>
+      </view>
+      
+      <view class="info-item">
+        <text class="info-label">👥 适合人群</text>
+        <text class="info-value">{{activity.ageGroup}} · {{activity.targetGroup}}</text>
+      </view>
+      
+      <view class="info-item">
+        <text class="info-label">🏢 主办方</text>
+        <text class="info-value">{{activity.organizer || '暂无信息'}}</text>
+      </view>
+    </view>
+
+    <!-- 联系方式区 -->
+    <view class="contact-section card" wx:if="{{activity.contact}}">
+      <view class="section-title">联系方式</view>
+      <view class="contact-content">
+        <text class="contact-text">{{activity.contact}}</text>
+        <view class="contact-actions">
+          <button class="contact-btn" bindtap="onCallPhone" wx:if="{{activity.contact}}">
+            <text>📞 拨打</text>
+          </button>
+          <button class="contact-btn secondary" bindtap="onCopyContact">
+            <text>📋 复制</text>
+          </button>
+        </view>
+      </view>
+    </view>
+
+    <!-- 操作按钮区 -->
+    <view class="action-section">
+      <button class="action-btn" bindtap="onCopyInfo">
+        <text>📋 复制活动信息</text>
+      </button>
+      <button class="action-btn secondary" bindtap="onOpenSource" wx:if="{{activity.sourceUrl}}">
+        <text>🔗 查看原文</text>
+      </button>
+    </view>
+
+    <!-- 免责声明提示 -->
+    <view class="disclaimer-hint">
+      <text>⚠️ 本信息仅供参考，具体以主办方公布为准。参与活动前请仔细阅读</text>
+      <navigator url="/pages/disclaimer/disclaimer" class="disclaimer-link">免责声明</navigator>
+    </view>
+
+    <!-- 底部占位 -->
+    <view class="bottom-spacer"></view>
+  </block>
+</view>

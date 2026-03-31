@@ -1,0 +1,188 @@
+/**pages/disclaimer/disclaimer.wxss**/
+
+/* 标签栏 */
+.tab-bar {
+  display: flex;
+  background: #fff;
+  margin: -20rpx -20rpx 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 28rpx 0;
+  font-size: 30rpx;
+  color: #666;
+  position: relative;
+}
+
+.tab-item.active {
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 4rpx;
+  background: #4CAF50;
+  border-radius: 2rpx;
+}
+
+/* 加载状态 */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100rpx;
+  color: #999;
+}
+
+/* 内容区域 */
+.content-wrapper {
+  margin-bottom: 20rpx;
+}
+
+.content-card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.content-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 24rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.content-body {
+  margin-bottom: 24rpx;
+}
+
+.content-text {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+.content-footer {
+  text-align: right;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.update-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 风险提示 */
+.risk-notice {
+  background: #ffebee;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-top: 20rpx;
+}
+
+.notice-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #f44336;
+  margin-bottom: 16rpx;
+}
+
+.notice-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.notice-content text {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 用户须知 */
+.user-guide {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.guide-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 24rpx;
+}
+
+.guide-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.guide-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+}
+
+.guide-num {
+  width: 40rpx;
+  height: 40rpx;
+  background: #e8f5e9;
+  color: #4CAF50;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.guide-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 联系客服 */
+.contact-section {
+  margin-bottom: 20rpx;
+}
+
+.contact-btn {
+  background: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 12rpx;
+  padding: 28rpx 0;
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.contact-btn::after {
+  border: none;
+}
+
+/* 底部占位 */
+.bottom-spacer {
+  height: 40rpx;
+}

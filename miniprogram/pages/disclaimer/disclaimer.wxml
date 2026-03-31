@@ -1,0 +1,99 @@
+<!--pages/disclaimer/disclaimer.wxml-->
+<view class="container">
+  <!-- 标签切换 -->
+  <view class="tab-bar">
+    <view 
+      class="tab-item {{activeTab === 'disclaimer' ? 'active' : ''}}"
+      bindtap="onSwitchTab"
+      data-tab="disclaimer"
+    >
+      <text>免责声明</text>
+    </view>
+    <view 
+      class="tab-item {{activeTab === 'terms' ? 'active' : ''}}"
+      bindtap="onSwitchTab"
+      data-tab="terms"
+    >
+      <text>服务条款</text>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 免责声明内容 -->
+  <view class="content-wrapper" wx:if="{{!loading && activeTab === 'disclaimer'}}">
+    <view class="content-card">
+      <view class="content-title">{{disclaimer.title}}</view>
+      <view class="content-body">
+        <text class="content-text">{{disclaimer.content}}</text>
+      </view>
+      <view class="content-footer">
+        <text class="update-time">最后更新：{{disclaimer.lastUpdated}}</text>
+      </view>
+    </view>
+
+    <!-- 风险提示 -->
+    <view class="risk-notice">
+      <view class="notice-title">⚠️ 重要提醒</view>
+      <view class="notice-content">
+        <text>1. 本小程序仅提供信息展示服务，不参与任何活动的组织和管理</text>
+        <text>2. 参与活动前请务必与主办方确认活动详情</text>
+        <text>3. 注意保护个人信息安全，谨防诈骗</text>
+        <text>4. 未成年人参与活动需有监护人陪同</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 服务条款内容 -->
+  <view class="content-wrapper" wx:if="{{!loading && activeTab === 'terms'}}">
+    <view class="content-card">
+      <view class="content-title">{{terms.title}}</view>
+      <view class="content-body">
+        <text class="content-text">{{terms.content}}</text>
+      </view>
+      <view class="content-footer">
+        <text class="update-time">最后更新：{{terms.lastUpdated}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 用户须知 -->
+  <view class="user-guide" wx:if="{{!loading}}">
+    <view class="guide-title">📋 用户须知</view>
+    <view class="guide-list">
+      <view class="guide-item">
+        <text class="guide-num">1</text>
+        <text class="guide-text">本小程序展示的活动信息来源于公开渠道，仅供参考</text>
+      </view>
+      <view class="guide-item">
+        <text class="guide-num">2</text>
+        <text class="guide-text">请以主办方发布的官方信息为准，如有疑问请直接联系主办方</text>
+      </view>
+      <view class="guide-item">
+        <text class="guide-num">3</text>
+        <text class="guide-text">报名参加活动前请仔细阅读活动规则和要求</text>
+      </view>
+      <view class="guide-item">
+        <text class="guide-num">4</text>
+        <text class="guide-text">注意保护个人隐私，不要随意透露敏感信息</text>
+      </view>
+      <view class="guide-item">
+        <text class="guide-num">5</text>
+        <text class="guide-text">如发现虚假信息或违法行为，请及时向我们举报</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 联系客服 -->
+  <view class="contact-section" wx:if="{{!loading}}">
+    <button class="contact-btn" bindtap="onContactService">
+      <text>📧 联系客服</text>
+    </button>
+  </view>
+
+  <!-- 底部占位 -->
+  <view class="bottom-spacer"></view>
+</view>

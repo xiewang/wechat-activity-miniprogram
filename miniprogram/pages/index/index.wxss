@@ -1,0 +1,172 @@
+/**pages/index/index.wxss**/
+
+/* 搜索栏 */
+.search-bar {
+  padding: 20rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  border-radius: 32rpx;
+  padding: 16rpx 24rpx;
+}
+
+.search-icon {
+  font-size: 28rpx;
+  margin-right: 12rpx;
+}
+
+.search-placeholder {
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 区块样式 */
+.section {
+  margin-bottom: 20rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.view-more {
+  font-size: 26rpx;
+  color: #4CAF50;
+}
+
+/* 活动类型网格 */
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20rpx;
+  padding: 20rpx;
+  background: #fff;
+}
+
+.type-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.type-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* 不同类型颜色 */
+.type-体育 { background: linear-gradient(135deg, #4CAF50, #8BC34A); }
+.type-艺术 { background: linear-gradient(135deg, #FF9800, #FFC107); }
+.type-科技 { background: linear-gradient(135deg, #2196F3, #03A9F4); }
+.type-公益 { background: linear-gradient(135deg, #9C27B0, #E91E63); }
+.type-学术 { background: linear-gradient(135deg, #673AB7, #9C27B0); }
+.type-实践 { background: linear-gradient(135deg, #009688, #4CAF50); }
+.type-其他 { background: linear-gradient(135deg, #607D8B, #9E9E9E); }
+
+.type-name {
+  font-size: 26rpx;
+  color: #333;
+  margin-bottom: 4rpx;
+}
+
+.type-count {
+  font-size: 22rpx;
+  color: #999;
+}
+
+/* 活动列表 */
+.activity-list {
+  background: #fff;
+  padding: 0 20rpx;
+}
+
+.activity-card {
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.activity-card:last-child {
+  border-bottom: none;
+}
+
+.activity-card:active {
+  background: #fafafa;
+}
+
+.activity-header {
+  margin-bottom: 16rpx;
+}
+
+.activity-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 12rpx;
+}
+
+.activity-tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.activity-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.info-item {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.info-item.deadline {
+  color: #f44336;
+}
+
+/* 加载状态 */
+.loading {
+  text-align: center;
+  padding: 40rpx;
+  color: #999;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 40rpx;
+}
+
+.empty-text {
+  color: #999;
+  font-size: 28rpx;
+}

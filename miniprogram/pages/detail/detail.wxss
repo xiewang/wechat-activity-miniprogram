@@ -1,0 +1,203 @@
+/**pages/detail/detail.wxss**/
+
+/* 加载状态 */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100rpx;
+  color: #999;
+}
+
+/* 过期横幅 */
+.expired-banner {
+  background: #ffebee;
+  padding: 24rpx;
+  text-align: center;
+  margin: -20rpx -20rpx 20rpx;
+}
+
+.expired-text {
+  color: #f44336;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+/* 倒计时横幅 */
+.countdown-banner {
+  background: linear-gradient(135deg, #4CAF50, #8BC34A);
+  padding: 24rpx;
+  text-align: center;
+  margin: -20rpx -20rpx 20rpx;
+}
+
+.countdown-text {
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+/* 卡片样式 */
+.card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+/* 头部区域 */
+.header-section {
+  padding: 32rpx;
+}
+
+.activity-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.activity-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.4;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.activity-desc {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 信息区域 */
+.info-section .section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 24rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20rpx;
+}
+
+.info-label {
+  font-size: 26rpx;
+  color: #999;
+  margin-bottom: 8rpx;
+}
+
+.info-value {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.info-value.expired-text {
+  color: #f44336;
+  text-decoration: line-through;
+}
+
+/* 联系区域 */
+.contact-section .section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 24rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.contact-text {
+  font-size: 32rpx;
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 20rpx;
+}
+
+.contact-btn {
+  flex: 1;
+  background: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 12rpx;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.contact-btn.secondary {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.contact-btn::after {
+  border: none;
+}
+
+/* 操作区域 */
+.action-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.action-btn {
+  background: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 12rpx;
+  padding: 28rpx 0;
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.action-btn.secondary {
+  background: #fff;
+  color: #4CAF50;
+  border: 2rpx solid #4CAF50;
+}
+
+.action-btn::after {
+  border: none;
+}
+
+/* 免责声明提示 */
+.disclaimer-hint {
+  background: #fff3e0;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  color: #666;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.disclaimer-link {
+  display: inline;
+  color: #4CAF50;
+  text-decoration: underline;
+}
+
+/* 底部占位 */
+.bottom-spacer {
+  height: 40rpx;
+}

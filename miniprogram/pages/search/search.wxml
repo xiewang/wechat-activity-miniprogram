@@ -1,0 +1,125 @@
+<!--pages/search/search.wxml-->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-header">
+    <view class="search-box">
+      <text class="search-icon">🔍</text>
+      <input 
+        class="search-input" 
+        placeholder="搜索活动名称..."
+        value="{{keyword}}"
+        bindinput="onKeywordInput"
+        bindconfirm="onSearchConfirm"
+      />
+      <text class="clear-icon" wx:if="{{keyword}}" bindtap="onClearKeyword">✕</text>
+    </view>
+    <text class="filter-btn" bindtap="onToggleFilter">筛选</text>
+  </view>
+
+  <!-- 筛选面板 -->
+  <view class="filter-panel" wx:if="{{showFilter}}">
+    <view class="filter-section">
+      <text class="filter-label">活动类型</text>
+      <view class="filter-options">
+        <view 
+          class="filter-option {{filters.type === (item === '全部' ? '' : item) ? 'active' : ''}}"
+          wx:for="{{typeOptions}}"
+          wx:key="*this"
+          bindtap="onSelectType"
+          data-value="{{item}}"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+    
+    <view class="filter-section">
+      <text class="filter-label">所在地区</text>
+      <view class="filter-options">
+        <view 
+          class="filter-option {{filters.region === (item === '全部' ? '' : item) ? 'active' : ''}}"
+          wx:for="{{regionOptions}}"
+          wx:key="*this"
+          bindtap="onSelectRegion"
+          data-value="{{item}}"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+    
+    <view class="filter-section">
+      <text class="filter-label">年龄段</text>
+      <view class="filter-options">
+        <view 
+          class="filter-option {{filters.ageGroup === (item === '全部' ? '' : item) ? 'active' : ''}}"
+          wx:for="{{ageGroupOptions}}"
+          wx:key="*this"
+          bindtap="onSelectAgeGroup"
+          data-value="{{item}}"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+    
+    <view class="filter-actions">
+      <text class="clear-filters" bindtap="onClearFilters">清除筛选</text>
+      <text class="close-filters" bindtap="onToggleFilter">完成</text>
+    </view>
+  </view>
+
+  <!-- 当前筛选条件显示 -->
+  <view class="active-filters" wx:if="{{filters.type || filters.region || filters.ageGroup}}">
+    <text class="filter-tag" wx:if="{{filters.type}}">{{filters.type}}</text>
+    <text class="filter-tag" wx:if="{{filters.region}}">{{filters.region}}</text>
+    <text class="filter-tag" wx:if="{{filters.ageGroup}}">{{filters.ageGroup}}</text>
+  </view>
+
+  <!-- 搜索结果列表 -->
+  <view class="result-list">
+    <view 
+      class="result-item"
+      wx:for="{{activities}}"
+      wx:key="_id"
+      bindtap="onActivityTap"
+      data-id="{{item._id}}"
+    >
+      <view class="item-header">
+        <text class="item-title">{{item.title}}</text>
+        <view class="item-tags">
+          <text class="tag tag-primary">{{item.type}}</text>
+          <text class="tag tag-secondary">{{item.ageGroup}}</text>
+          <text class="tag tag-warning" wx:if="{{isDeadlineSoon(item.deadline)}}">即将截止</text>
+        </view>
+      </view>
+      <view class="item-info">
+        <text class="info-text">📍 {{item.region}} {{item.location}}</text>
+        <text class="info-text">📅 {{formatDate(item.startDate)}} - {{formatDate(item.endDate)}}</text>
+        <text class="info-text deadline" wx:if="{{item.deadline}}">
+          ⏰ 报名截止：{{formatDate(item.deadline)}}
+        </text>
+      </view>
+      <view class="item-organizer">
+        <text>主办方：{{item.organizer || '暂无'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 无更多数据 -->
+  <view class="no-more" wx:if="{{!hasMore && activities.length > 0}}">
+    <text>没有更多数据了</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && activities.length === 0}}">
+    <text class="empty-icon">🔍</text>
+    <text class="empty-text">未找到相关活动</text>
+    <text class="empty-tip">试试其他关键词或筛选条件</text>
+  </view>
+</view>

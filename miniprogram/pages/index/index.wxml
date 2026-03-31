@@ -1,0 +1,105 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar" bindtap="onSearchTap">
+    <view class="search-input">
+      <text class="search-icon">🔍</text>
+      <text class="search-placeholder">搜索活动名称、类型、地区...</text>
+    </view>
+  </view>
+
+  <!-- 活动分类 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">活动分类</text>
+    </view>
+    <view class="type-grid">
+      <view 
+        class="type-item" 
+        wx:for="{{activityTypes}}" 
+        wx:key="type"
+        bindtap="onTypeTap"
+        data-type="{{item.type}}"
+      >
+        <view class="type-icon {{'type-' + item.type}}">
+          <text>{{item.type[0]}}</text>
+        </view>
+        <text class="type-name">{{item.type}}</text>
+        <text class="type-count">{{item.count}}个活动</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 推荐活动 -->
+  <view class="section" wx:if="{{recommendedActivities.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">热门推荐</text>
+      <text class="view-more" bindtap="onViewMoreRecommended">
+        {{showAllRecommended ? '收起' : '更多'}}
+      </text>
+    </view>
+    <view class="activity-list">
+      <view 
+        class="activity-card"
+        wx:for="{{showAllRecommended ? recommendedActivities : recommendedActivities.slice(0, 3)}}"
+        wx:key="_id"
+        bindtap="onActivityTap"
+        data-id="{{item._id}}"
+      >
+        <view class="activity-header">
+          <text class="activity-title">{{item.title}}</text>
+          <view class="activity-tags">
+            <text class="tag tag-primary">{{item.type}}</text>
+            <text class="tag tag-secondary">{{item.ageGroup}}</text>
+            <text class="tag tag-warning" wx:if="{{isDeadlineSoon(item.deadline)}}">即将截止</text>
+          </view>
+        </view>
+        <view class="activity-info">
+          <text class="info-item">📍 {{item.region}} {{item.location}}</text>
+          <text class="info-item">📅 {{formatDate(item.startDate)}} - {{formatDate(item.endDate)}}</text>
+          <text class="info-item deadline" wx:if="{{item.deadline}}">
+            ⏰ 报名截止：{{formatDate(item.deadline)}}
+          </text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 最新活动 -->
+  <view class="section" wx:if="{{latestActivities.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">最新发布</text>
+    </view>
+    <view class="activity-list">
+      <view 
+        class="activity-card"
+        wx:for="{{latestActivities}}"
+        wx:key="_id"
+        bindtap="onActivityTap"
+        data-id="{{item._id}}"
+      >
+        <view class="activity-header">
+          <text class="activity-title">{{item.title}}</text>
+          <view class="activity-tags">
+            <text class="tag tag-primary">{{item.type}}</text>
+            <text class="tag tag-secondary">{{item.ageGroup}}</text>
+          </view>
+        </view>
+        <view class="activity-info">
+          <text class="info-item">📍 {{item.region}}</text>
+          <text class="info-item">📅 {{formatDate(item.startDate)}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && recommendedActivities.length === 0}}">
+    <text class="empty-text">暂无活动数据</text>
+  </view>
+</view>
